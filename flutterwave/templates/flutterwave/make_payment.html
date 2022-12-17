@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+</head>
+<body>
+<div>
+<h4>Make payment for: NGN {{ payment.amount }}</h4>
+<br>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+<button onclick="makePayment()" id="django-flutterwave-button">Pay</button>
+</div>
+<script>
+function makePayment() {
+  FlutterwaveCheckout({
+    public_key: "{{ flutter_public_key }}",
+    tx_ref: "{{ payment.ref }}",
+    amount: {{ payment.amount }},
+    currency: "NGN",
+    payment_options: "card, ussd",
+    redirect_url: "{% url 'payment_verification' payment.id %}",
+
+    customer: {
+      email: "{{ payment.email }}",
+        phone_number: "07063704879",
+    },
+  });
+}
+</script>
+</body>
+</html>

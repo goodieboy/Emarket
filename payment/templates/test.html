@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+</head>
+<body>
+<h1>Enter Amount</h1>
+    {% for p in user %}
+         <h2>{{ p.get_full_name }}</h2>
+        <ul>
+            <li>Email: {{ p.email }}</li>
+            <li>Amount: {{ p.payment.amount }}</li>
+        </ul>
+
+
+    {% endfor %}
+</body>
+</html>
